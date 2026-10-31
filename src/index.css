@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root {
+  --espresso: #2b2118;
+  --sand: #c9b79c;
+  --brown: #6b4f3a;
+  --cream: #faf7f2;
+  --danger: #e6a08c;
+}
+
+@theme inline {
+  --color-espresso: var(--espresso);
+  --color-sand: var(--sand);
+  --color-brown: var(--brown);
+  --color-cream: var(--cream);
+  --color-danger: var(--danger);
+
+  --font-sans: "Manrope Variable", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+  }
+
+  body {
+    background: var(--espresso);
+    color: var(--cream);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--sand);
+    color: var(--espresso);
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.line > span {
+  display: block;
+  transform: translateY(110%);
+  animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes rise {
+  to {
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  transition: background-size 0.4s ease;
+}
+
+.link:hover {
+  background-position: 100% 100%;
+  background-size: 0 1px;
+}
+
+.link-grow {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.4s ease;
+}
+
+.link-grow:hover,
+.link-grow[aria-current],
+.link-grow[aria-pressed="true"],
+.link-grow[aria-selected="true"] {
+  background-size: 100% 1px;
+}
+
+dialog.project-dialog {
+  margin: auto;
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  width: 100%;
+  max-width: min(60rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+}
+
+dialog.project-dialog[open] {
+  animation: fade-in 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+dialog.project-dialog::backdrop {
+  background: rgb(43 33 24 / 0.82);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .line > span {
+    transform: none;
+  }
+}
