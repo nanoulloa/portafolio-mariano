@@ -21,6 +21,7 @@ export default function Skills() {
             value={category}
             onChange={setCategory}
             items={skillCategories.map((id) => ({ id, label: t.Skills.tabs[id] }))}
+            className="max-sm:grid max-sm:grid-cols-2 max-sm:justify-items-start"
           />
         </Reveal>
 

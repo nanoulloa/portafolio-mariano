@@ -66,7 +66,7 @@ export default function Projects() {
         <SectionHeading id="proyectos-title" title={t.Projects.title} subtitle={t.Projects.subtitle} />
 
         <Reveal delay={100} className="mt-12">
-          <div role="group" aria-label={t.Projects.filtersLabel} className="flex flex-wrap gap-x-7 gap-y-3">
+          <div role="group" aria-label={t.Projects.filtersLabel} className="flex flex-wrap gap-x-7 gap-y-3 max-sm:grid max-sm:grid-cols-2 max-sm:justify-items-start">
             {filters.map((value) => (
               <button
                 key={value}
@@ -91,7 +91,7 @@ export default function Projects() {
             return (
               <li key={project.id} className="fade-in" style={{ "--delay": `${index * 60}ms` } as React.CSSProperties}>
                 <article className="group relative has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-8 has-[:focus-visible]:outline-cream">
-                  <div className="aspect-[4/3] overflow-hidden bg-sand">
+                  <div className="aspect-[16/10] overflow-hidden bg-sand">
                     <Cover project={project} alt={item.title} />
                   </div>
                   <div className="mt-5 flex items-start justify-between gap-4">
@@ -146,7 +146,7 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
     >
       {project && item && (
         <div className="bg-espresso text-cream">
-          <div className={cn("relative overflow-hidden", project.image ? "aspect-[16/9]" : "h-56")}>
+          <div className={cn("relative overflow-hidden", project.image ? "aspect-[16/10]" : "h-56")}>
             <Cover project={project} alt={item.title} large />
             <button
               type="button"

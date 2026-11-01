@@ -21,7 +21,7 @@ export default function Hero() {
     >
       <div className="mx-auto grid w-full max-w-6xl items-end gap-16 md:grid-cols-12 md:gap-10">
         <div className="md:col-span-7">
-          <p className="fade-in text-xs font-medium tracking-[0.2em] text-sand uppercase">{t.Hero.tag}</p>
+          <p className="fade-in text-xs font-medium tracking-[0.2em] text-balance text-sand uppercase">{t.Hero.tag}</p>
 
           <h1 id="inicio-title" className="mt-7 text-[clamp(3rem,8vw,6rem)] leading-[0.95] font-bold tracking-[-0.04em]">
             <span className="line">

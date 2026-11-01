@@ -7,9 +7,10 @@ type Props<T extends string> = {
   items: { id: T; label: string }[];
   value: T;
   onChange: (value: T) => void;
+  className?: string;
 };
 
-export default function Tabs<T extends string>({ label, idPrefix, items, value, onChange }: Props<T>) {
+export default function Tabs<T extends string>({ label, idPrefix, items, value, onChange, className }: Props<T>) {
   const refs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const onKeyDown = (event: React.KeyboardEvent, index: number) => {
@@ -22,7 +23,7 @@ export default function Tabs<T extends string>({ label, idPrefix, items, value, 
   };
 
   return (
-    <div role="tablist" aria-label={label} className="flex flex-wrap gap-x-7 gap-y-3">
+    <div role="tablist" aria-label={label} className={cn("flex flex-wrap gap-x-7 gap-y-3", className)}>
       {items.map((item, index) => {
         const selected = item.id === value;
         return (

@@ -32,7 +32,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-40 border-b bg-espresso text-cream transition-colors duration-300",
+        "fixed inset-x-0 top-0 z-50 border-b bg-espresso text-cream transition-colors duration-300",
         scrolled || open ? "border-cream/10" : "border-transparent",
       )}
     >
