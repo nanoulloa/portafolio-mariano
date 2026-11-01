@@ -11,6 +11,8 @@ export default function WhatsAppChat() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const href = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message.trim() || t.WhatsApp.defaultMessage)}`;
 
   useEffect(() => {
     if (!open) return;
@@ -22,12 +24,11 @@ export default function WhatsAppChat() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  const send = (event: React.FormEvent) => {
-    event.preventDefault();
-    const text = message.trim() || t.WhatsApp.defaultMessage;
-    window.open(`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
-    setMessage("");
-    setOpen(false);
+  const onSent = () => {
+    window.setTimeout(() => {
+      setMessage("");
+      setOpen(false);
+    });
   };
 
   return (
@@ -62,7 +63,7 @@ export default function WhatsAppChat() {
           <p className="max-w-[85%] rounded-2xl rounded-tl-sm bg-sand/50 px-4 py-3 text-sm">{t.WhatsApp.greeting}</p>
         </div>
 
-        <form onSubmit={send} className="flex items-end gap-2 border-t border-espresso/10 p-3">
+        <div className="flex items-end gap-2 border-t border-espresso/10 p-3">
           <label htmlFor="whatsapp-message" className="sr-only">
             {t.WhatsApp.label}
           </label>
@@ -73,20 +74,26 @@ export default function WhatsAppChat() {
             value={message}
             onChange={(event) => setMessage(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Enter" && !event.shiftKey) send(event);
+              if (event.key !== "Enter" || event.shiftKey) return;
+              event.preventDefault();
+              linkRef.current?.click();
             }}
             placeholder={t.WhatsApp.placeholder}
             className="flex-1 resize-none bg-transparent px-2 py-2 text-sm placeholder:text-espresso/40 focus:outline-none"
           />
-          <button
-            type="submit"
+          <a
+            ref={linkRef}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onSent}
             aria-label={t.WhatsApp.send}
             title={t.WhatsApp.send}
             className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brown text-cream transition-colors duration-300 hover:bg-espresso"
           >
             <ArrowUp className="size-4" />
-          </button>
-        </form>
+          </a>
+        </div>
       </div>
 
       <button
