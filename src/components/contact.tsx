@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, CircleAlert, CircleCheck, Loader2 } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, CircleAlert, CircleCheck, Loader2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/i18n/language-provider";
 import type { Messages } from "@/i18n/es";
@@ -101,11 +101,12 @@ export default function Contact() {
     }
   };
 
-  const directLinks = [
+  const directLinks: { label: string; value: string; href: string; download?: boolean }[] = [
     { label: t.Contact.links.email, value: site.email, href: `mailto:${site.email}` },
     { label: t.Contact.links.whatsapp, value: site.phone, href: `https://wa.me/${site.whatsapp}` },
     { label: t.Contact.links.linkedin, value: "Mariano Ulloa", href: site.linkedin },
     { label: t.Contact.links.github, value: "nanoulloa", href: site.github },
+    { label: t.Contact.links.cv, value: t.Contact.cvValue, href: site.cv, download: true },
   ];
 
   const field = (name: Field, label: string, placeholder: string, options: { type?: string; autoComplete?: string; wide?: boolean } = {}) => {
@@ -173,14 +174,19 @@ export default function Contact() {
                 <li key={link.href} className="border-b border-cream/15">
                   <a
                     href={link.href}
-                    target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                    download={link.download}
+                    target={link.href.startsWith("mailto:") || link.download ? undefined : "_blank"}
                     rel="noreferrer"
                     className="group flex items-center justify-between gap-4 py-4"
                   >
                     <span className="text-sm text-cream/60">{link.label}</span>
                     <span className="flex min-w-0 items-center gap-2 transition-colors group-hover:text-sand">
                       <span className="truncate">{link.value}</span>
-                      <ArrowUpRight className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      {link.download ? (
+                        <ArrowDown className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-y-0.5" />
+                      ) : (
+                        <ArrowUpRight className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      )}
                     </span>
                   </a>
                 </li>

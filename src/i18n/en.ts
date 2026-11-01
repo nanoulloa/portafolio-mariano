@@ -38,6 +38,7 @@ const en: Messages = {
     p2: "At Dojo Coding I'm a full stack developer: I build the platform with the team and develop the platforms of the clients who come to the studio, from start to finish.",
     p3: "I'm also the CEO of Numo, a Bitcoin finance startup that was born at a Starknet hackathon. We won first place, and that opened the door to investment and to three startup houses in Mexico City, Nosara and Buenos Aires.",
     quote: "The art of not being ready and doing it anyway will take you further than you think.",
+    cv: { label: "Download CV", note: "PDF" },
     stats: {
       projects: "projects in the gallery",
       raised: "raised in investment with Numo",
@@ -202,7 +203,8 @@ const en: Messages = {
     subtitle:
       "Have a project, an idea or an opportunity? Write to me through the form and the message goes straight to my inbox.",
     direct: "You can also find me on",
-    links: { email: "Email", whatsapp: "WhatsApp", linkedin: "LinkedIn", github: "GitHub" },
+    links: { email: "Email", whatsapp: "WhatsApp", linkedin: "LinkedIn", github: "GitHub", cv: "CV" },
+    cvValue: "Download PDF",
     form: {
       name: "Name",
       namePlaceholder: "Your name",

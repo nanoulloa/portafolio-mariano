@@ -1,7 +1,9 @@
+import { ArrowDown } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/language-provider";
 import { certifications } from "@/lib/certifications";
 import { projects } from "@/lib/projects";
+import { site } from "@/lib/site";
 import Reveal from "./reveal";
 import SectionHeading from "./section-heading";
 import Tabs from "./tabs";
@@ -43,6 +45,17 @@ export default function About() {
             <p>{t.About.p1}</p>
             <p>{t.About.p2}</p>
             <p>{t.About.p3}</p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-3">
+              <a
+                href={site.cv}
+                download
+                className="group inline-flex items-center gap-3 rounded-full bg-brown px-7 py-3.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-espresso"
+              >
+                {t.About.cv.label}
+                <ArrowDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+              </a>
+              <span className="text-sm text-espresso/60">{t.About.cv.note}</span>
+            </div>
           </Reveal>
         </div>
 

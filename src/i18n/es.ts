@@ -36,6 +36,7 @@ const es = {
     p2: "En Dojo Coding soy desarrollador full stack: construyo la plataforma junto al equipo y desarrollo de principio a fin las plataformas de los clientes que llegan al estudio.",
     p3: "También soy CEO de Numo, una startup de finanzas en Bitcoin que nació en una hackathon de Starknet. Ganamos el primer lugar, y eso nos abrió la puerta a una inversión y a tres startup houses en Ciudad de México, Nosara y Buenos Aires.",
     quote: "El arte de no estar listo y hacerlo de todos modos, te llevará más lejos de lo que pensás.",
+    cv: { label: "Descargar CV", note: "PDF · en inglés" },
     stats: {
       projects: "proyectos en la galería",
       raised: "de inversión levantada con Numo",
@@ -200,7 +201,8 @@ const es = {
     subtitle:
       "¿Tienes un proyecto, una idea o una oportunidad? Escríbeme por el formulario y el mensaje me llega directo al correo.",
     direct: "También me encuentras en",
-    links: { email: "Correo", whatsapp: "WhatsApp", linkedin: "LinkedIn", github: "GitHub" },
+    links: { email: "Correo", whatsapp: "WhatsApp", linkedin: "LinkedIn", github: "GitHub", cv: "CV" },
+    cvValue: "Descargar PDF",
     form: {
       name: "Nombre",
       namePlaceholder: "Tu nombre",
